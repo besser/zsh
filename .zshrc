@@ -50,6 +50,9 @@ eval "$(zoxide init zsh)"
 # Load completion system
 autoload -Uz compinit
 
+# Habilita o autocompletar para expandir aliases antes de sugerir arquivos
+setopt complete_aliases
+
 # Initialize completion with cached metadata file
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 
@@ -107,7 +110,6 @@ source "$ZDOTDIR/plugins.zsh"
 # Prompt/theme
 source "$ZDOTDIR/prompt.zsh"
 
-
 # =========================================================
 # Node / NVM
 # =========================================================
@@ -115,3 +117,10 @@ source "$ZDOTDIR/prompt.zsh"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+
+# =========================================================
+# Python / UV
+# =========================================================
+
+. "$HOME/.local/share/../bin/env"
+

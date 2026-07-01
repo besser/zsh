@@ -1,6 +1,7 @@
 # Zsh compiled files
 *.zwc
 .zcompdump*
+.zcompcache*
 
 # Auto-installed by plugin manager
 plugins/
