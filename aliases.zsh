@@ -65,7 +65,7 @@ alias stream='mpv av://v4l2:/dev/video4 --fullscreen --demuxer-lavf-o=input_form
 # APT / FLATPAK / BREW
 # =========================================================
 alias clean-up="sudo apt autoclean && sudo apt autoremove; brew cleanup"
-alias up-all="echo '########## APT ##########';sudo apt update && sudo apt full-upgrade;echo '\n########## FLATPAK ##########';flatpak update;echo '\n########## BREW ##########';brew update && brew outdated && brew upgrade"
+alias up-all="echo '########## APT ##########';sudo apt update && sudo apt full-upgrade;echo '\n########## FLATPAK ##########';flatpak update;echo '\n########## BREW ##########';HOMEBREW_NO_INSTALL_CLEANUP=1 brew update && HOMEBREW_NO_INSTALL_CLEANUP=1 brew outdated && brew upgrade"
 
 # =========================================================
 # Apps

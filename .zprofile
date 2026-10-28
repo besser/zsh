@@ -11,3 +11,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # asdf
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+# adb tools
+export PATH="$HOME/adb-tools:$PATH"

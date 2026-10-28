@@ -1,0 +1,32 @@
+#compdef flatpak
+
+# Override local do /usr/share/zsh/vendor-completions/_flatpak:
+# usa _files em vez de _path_files -g, para que pastas também sejam
+# oferecidas ao completar arquivos .flatpak/.flatpakref.
+
+# 'emulate -L zsh' removido: ele desligava extendedglob/nullglob, que o
+# sistema de completion liga e dos quais o _files depende.
+
+local index
+(( index = ${(c)#words[0,CURRENT]} + $#PREFIX + 1 ))
+
+
+local resp=($(flatpak complete "$words" $index "$words[CURRENT]"))
+
+_description options opt_expl option
+_description arguments arg_expl argument
+
+local match
+for match in $resp; do
+  case $match in
+    __FLATPAK_FILE) _files;;
+    __FLATPAK_BUNDLE_FILE) _files -g '*.flatpak';;
+    __FLATPAK_BUNDLE_OR_REF_FILE) _files -g '*.flatpak(|ref)';;
+    __FLATPAK_DIR) _path_files -/;;
+    -*=) compadd $opt_expl[@] -S "" -- $match;;
+    -*) compadd $opt_expl[@] -- $match;;
+    *) compadd $arg_expl[@] $match;;
+  esac
+done
+
+# vim: ft=zsh

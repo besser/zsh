@@ -43,6 +43,8 @@ export LF_ICONS
 # Initialize zoxide
 eval "$(zoxide init zsh)"
 
+fpath=("$ZDOTDIR/completions" $fpath)
+
 # =========================================================
 # Completion
 # =========================================================
